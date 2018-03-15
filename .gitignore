@@ -1,0 +1,8 @@
+.DS_Store
+**/data
+!**/data/manifest.json
+**/.ipynb_checkpoints
+*.pyc
+*~
+
+
