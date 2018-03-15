@@ -1,0 +1,260 @@
+<html>
+<head>
+  <title> SimpleITK Tutorial @ IEEE International Symposium on Biomedical Imaging 2018 </title>
+
+<!-- Include in <head> to load fonts from Google -->
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+<style>
+  body {
+	text-align: justify;
+	font-family: "Roboto Condensed", sans-serif;
+  }
+
+ #nav {
+        margin-top: -8px;
+	width: 900;
+	padding: 0;
+        z-index: 100;
+        background-color: #fff;
+ }
+
+#nav ul {
+    list-style-type: none;
+}
+
+#nav li {
+	float: left;
+}
+
+#nav li a {
+	display: block;
+	padding: 8px 15px;
+	text-decoration: none;
+	color: #069;
+}
+
+#nav li a:hover {
+	color: #c00;
+	background-color: #fff;
+}
+
+pre, code {
+ background-color: LightGrey;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<table id="nav">
+<tr><td align="center">
+  <h1>April 4 2018</h1> <img src="simpleITKAtISBI18Logo.png" border="0" height="150" align="middle" alt="SimpleITK at IEEE International Symposium on Biomedical Imaging 2018">
+</tr></td>
+<tr><td>
+<ul>
+  <li><a class="active" href="#overview"><span style="font-weight:bold">OVERVIEW</span></a></li>
+  <li><a href="#organizers"><span style="font-weight:bold">ORGANIZERS</span></a></li>
+  <li><a href="#prerequisites"><span style="font-weight:bold">PREREQUISITES</span></a></li>
+  <li><a href="#program"><span style="font-weight:bold">PROGRAM</span></a></li>
+</ul>
+<tr><td>
+</table>
+
+<table width="900" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+
+<p style="background-color:CornflowerBlue;">
+To contact us with problems or questions, please post to this repository's <a href="https://github.com/SimpleITK/ISBI2018_TUTORIAL/issues">GitHub issue reporting system</a> (requires a GitHub user account).
+</p>
+
+
+<a id="overview"></a><h3>Overview</h3>
+
+<p>
+<a href="https://github.com/SimpleITK/SimpleITK">SimpleITK</a> is a simplified
+programming interface to the algorithms and data structures of the
+<a href="https://itk.org/">Insight Segmentation and Registration Toolkit</a> (ITK).
+It supports bindings for multiple programming languages including C++, Python, R,
+Java, C#, Lua, Ruby and TCL. Combining SimpleITK's Python or R bindings with
+the <a href="http://jupyter.org/">Jupyter notebook</a> web application creates
+an environment which facilitates collaborative development of biomedical image
+analysis workflows.
+</p>
+
+<p>
+In this tutorial, we will use a hands-on approach utilizing Jupyter notebooks to
+explore and experiment with various SimpleITK features in the Python and R
+programming languages. Participants will follow along using their personal
+laptops, enabling them to explore the effects of code changes and parameter
+settings not covered by the instructor. We will start by introducing the
+toolkit's two basic data elements, Images and Transformations. We illustrate
+how the two are combined to perform image resampling. We then show how to use
+SimpleITK as  a tool for image preparation and data augmentation for deep
+learning via spatial (resampling) and intensity transformations. We will then
+explore the various features available in the
+toolkit's registration framework including: optimizer selection, the use of
+linear and deformable transformations, the embedded multi-resolution framework,
+self-calibrating optimizers and the use of callbacks for registration progress
+monitoring. Time permitting, we will provide a short overview of SimpleITK's approach
+to development of a maintainable collabaritve Jupyter notebook environment.
+</p>
+
+<p>
+Beyond the notebooks used in this course you can find the <a href="https://github.com/InsightSoftwareConsortium/SimpleITK-Notebooks">main SimpleITK notebooks repository</a> on GitHub.
+</p>
+
+<a id="organizers"></a><h3>Organizers</h3>
+<ul>
+<li>Hans J. Johnson, University of Iowa.</li>
+<li>Bradley C. Lowekamp, Medical Science & Computing and National Institutes of Health.</li>
+<li>Ziv Yaniv, TAJ Technologies Inc. and National Institutes of Health.</li>
+</ul>
+
+<a id="prerequisites"></a><h3>Prerequisites</h3>
+
+<p style="border:2px; border-style:solid; border-color:#FF0000;">
+If you encounter problems or have questions, please post using this repository's <a href="https://github.com/SimpleITK/ISBI2018_TUTORIAL/issues">GitHub issue reporting system</a> (requires a GitHub user account).
+</p>
+
+<p>
+In this course we will use the Anaconda Python distribution (required even if you intend to work in R). Please follow the instructions below to setup the environment we will use during the course. All commands below are issued on the <b>command line</b> (Linux/Mac - terminal, Windows - Anaconda Prompt).
+</p>
+
+<ol>
+<li>
+<a href= "https://fiji.sc/#download"> Download and install</a> the Fiji image viewer. This is the default image viewer used by SimpleITK:
+  <ul>
+   <li>
+   On Windows: Install into your user directory (e.g. C:\Users\[your name]\Fiji.app).
+   </li>
+   <li>
+   On Linux: Install into ~/bin .
+   </li>
+   <li>
+   On Mac: Install into /Applications .
+   </li>
+  </ul>
+
+</li>
+
+<li>
+<a href="https://www.anaconda.com/download/">Download and install</a> the Anaconda Python 3.6 version for your operating system. We assume it is installed in a directory named anaconda3.
+</li>
+
+<li>
+  <ul>
+   <li> On Windows: open the Anaconda Prompt (found under the Anaconda3 start menu).</li>
+   <li> On Linux/Mac: on the command line <code>source path_to_anaconda3/bin/activate base</code></li>
+  </ul>
+</li>
+
+<li>
+Update the base anaconda environment and install the git version control system into it.
+<pre><code>conda update conda
+conda update anaconda
+conda install git
+</code></pre>
+</li>
+
+<li>
+Clone this repository:
+<pre><code>git clone https://github.com/SimpleITK/ISBI2018_TUTORIAL.git
+</code></pre>
+</li>
+
+<li>
+Create the virtual environment containing all packages required for the course:
+<pre><code>conda env create -f ISBI2018_TUTORIAL/python/environment.yml
+</code></pre>
+</li>
+
+<li>
+Activate the virtual environment. On the commandline, on Windows this is the Anaconda
+Prompt found under the Anaconda3 start menu, and on Linux/Mac this is the terminal:
+<code>conda activate sitkISBI18</code>.</li>
+</li>
+</ol>
+
+<a id="continueWithPython"></a><h4>Continue With Python</h4>
+
+<ol>
+<li>
+On the command line:
+<code>jupyter nbextension enable --py --sys-prefix widgetsnbextension</code>
+</li>
+
+<li>
+Go over the setup notebook (requires internet connectivity). This notebook checks the environment setup and downloads
+all of the required data:
+<pre><code>jupyter notebook ISBI2018_TUTORIAL/python/setup.ipynb
+</code></pre>
+</li>
+</ol>
+
+<a id="continueWithR"></a><h4>Continue With R</h4>
+<p>
+To work with the R programming language you will
+have to build SimpleITK on your computer. <i>Currently this only works for OS X and Linux.</i>
+We assume you have the <a href="https://cmake.org/">CMake
+program</a href>, git (you just installed it above) and a compiler in your path.
+</p>
+
+<ol>
+<li>
+Install <a href="https://www.r-project.org/">R</a> on your machine.
+</li>
+
+<li>
+From the R prompt (appropriate number of parallel jobs, MAKEJ, depends on your specific machine):
+</li>
+<pre><code>install.packages(c("devtools", "rPython", "plot3D", "tidyr", "ggplot2", "purrr"))
+devtools::install_github('IRkernel/IRkernel')
+IRkernel::installspec()
+devtools::install_github("SimpleITK/SimpleITKRInstaller", args=c('--configure-vars="MAKEJ=6"'))
+</code></pre>
+</li>
+
+<li>
+Go over the setup notebook (requires internet connectivity). This notebook checks the environment setup and downloads
+all of the required data:
+<pre><code>jupyter notebook ISBI2018_TUTORIAL/r/setup.ipynb
+</code></pre>
+</li>
+</ol>
+
+
+
+<a id="program"></a><h3>Program</h3>
+<ul style="list-style-type:none">
+<li>[1:30PM- 2:00PM] history and overview of SimpleITK. [ppt: <a href="simpleitkSetupAndSchedule.pptx">setup and schedule</a>, <a href="simpleitkHistoricalOverview.pptx">history</a>, <a href="simpleitkFundamentalConcepts.pptx">overview</a>]</li>
+<li>[2:00PM- 2:30PM] spatial transformations.</li>
+<li>[2:30PM- 3:00PM] images and resampling.</li>
+<li>[3:00PM - 3:15PM] (shortened) coffee break [<a href="coffee.png"><img src="coffee.png" border="0" height="20" alt="coffee"></a> ] - so much material, so little time.</li>
+<li>[3:15PM - 3:45PM] data augmentation for deep learning.</li>
+<li>[3:45PM - 4:30PM] basic registration.</li>
+<li>[4:30PM - 5:15PM] advanced registration.</li>
+<li>[5:15PM - 5:30PM] notebook development and testing, concluding remarks. [ppt: <a href="simpleitkNotebookDevelopmentTesting.pptx">development and testing </a>]</li>
+</ul>
+
+<a id="program"></a><h3>Supplementary Material</h3>
+
+<p>
+For those interested in reading more about the design of SimpleITK and the Notebooks environmnet:
+</p>
+<ul>
+<li>
+Z. Yaniv, B. C. Lowekamp, H. J. Johnson, R. Beare, "<a href="https://doi.org/10.1007/s10278-017-0037-8">SimpleITK Image-Analysis Notebooks: a Collaborative Environment for Education and Reproducible Research</a>", <i>J Digit Imaging.</i>, 2017.
+</li>
+<li>
+B. C. Lowekamp, D. T. Chen, L. Ib&aacute;&ntilde;ez, D. Blezek, "<a href="https://doi.org/10.3389/fninf.2013.00045">The Design of SimpleITK</a>", <i>Front. Neuroinform.</i>, 7:45., 2013.
+</li>
+</ul>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
