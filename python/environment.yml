@@ -1,0 +1,14 @@
+name: sitkISBI18
+
+channels:
+  - simpleitk
+  
+dependencies:
+  - python=3.6
+  - jupyter
+  - matplotlib
+  - ipywidgets
+  - numpy
+  - scipy
+  - pandas
+  - SimpleITK>=1.0.0
