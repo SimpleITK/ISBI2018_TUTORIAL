@@ -132,6 +132,7 @@ ReadImageInformation
 ReadTransform
 RegularStepGradientDescent
 Rueda
+SEM
 SPIE
 Sarrut
 ScalarChanAndVese
@@ -219,6 +220,8 @@ displaystyle
 documentclass
 dropdown
 eikonal
+endospore
+endospores
 env
 estimateLearningRate
 euler
@@ -325,6 +328,7 @@ spatio
 spc
 stepLength
 subsampling
+subtilis
 supersampling
 sz
 textrm
