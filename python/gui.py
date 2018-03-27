@@ -442,6 +442,7 @@ class MultiImageDisplay(object):
                       vmin=min_intensity,
                       vmax=max_intensity)
         self.update_display()
+        plt.tight_layout()
 
 
     def create_ui(self, shared_slider):

@@ -84,7 +84,8 @@ class Test_notebooks(object):
                               '02_images_and_resampling.ipynb',
                               '03_data_augmentation.ipynb',
                               '04_basic_registration.ipynb',
-                              '05_advanced_registration.ipynb'])
+                              '05_advanced_registration.ipynb',
+                              '06_segmentation_and_shape_analysis.ipynb'])
     def test_python_notebook(self, notebook_file_name):
        self.evaluate_notebook(self.absolute_path_python(notebook_file_name), 'python')
 
